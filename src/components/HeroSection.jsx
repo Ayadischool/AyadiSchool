@@ -28,7 +28,7 @@ const HeroSection = () => {
             Globally bloomed and locally at hand, exclusively for the children of expatriates in the GCC and around the world.
           </p>
           <Link href="/enroll">
-            <button className="mt-6 bg-green-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-600 transition duration-300">
+            <button className="mt-6 bg-green-500 a text-white px-6 py-3 rounded-lg font-medium hover:bg-green-600 transition duration-300">
               Enroll a Course
             </button>
           </Link>
@@ -43,7 +43,7 @@ const HeroSection = () => {
             ease: [0.25, 0.1, 0.25, 1], // cubic-bezier easing
             delay: 0.3
           }}
-          className="md:w-1/2 flex justify-center relative mt-10 md:mt-0"
+          className="md:w-1/2 flex justify-center relative mt-10 md:mt-0  hidden md:block"  
         >
           {/* Abstract Background Shapes */}
           <motion.div 
