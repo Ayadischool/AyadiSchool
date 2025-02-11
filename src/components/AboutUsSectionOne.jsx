@@ -1,11 +1,19 @@
 "use client";
 "use client";
-import React from "react";
+import React,{useState} from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import StudentRegistrationModal from "./StudentRegistrationModal"; // Import the modal
 
 const AboutUsSectionOne = () => {
+   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  
+    // Open the modal
+    const openModal = () => setIsModalOpen(true);
+  
+    // Close the modal
+    const closeModal = () => setIsModalOpen(false);
   return (
     <section className="pt-16  px-8 lg:px-8 max-w-7xl mx-auto overflow-hidden relative">
       {/* Animated Background Elements */}
@@ -109,6 +117,7 @@ const AboutUsSectionOne = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-lime-500 hidden text-white px-8 py-3 rounded-md lg:flex items-center gap-2 text-lg hover:bg-lime-600 transition-colors w-fit"
+            onClick={openModal} // Open the modal on clic
           >
             Join Us
             <ArrowRight className="w-5 h-5" />
@@ -144,12 +153,14 @@ const AboutUsSectionOne = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-lime-500 text-white px-8 py-3 rounded-md lg:hidden flex items-center gap-2 text-lg hover:bg-lime-600 transition-colors w-fit"
+            onClick={openModal} // Open the modal on clic
           >
             Join Us
             <ArrowRight className="w-5 h-5" />
           </motion.button>
         </motion.div>
       </div>
+      <StudentRegistrationModal open={isModalOpen} onClose={closeModal} />
     </section>
   );
 };

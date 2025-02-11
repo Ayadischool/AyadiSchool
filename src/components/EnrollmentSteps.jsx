@@ -1,9 +1,18 @@
 "use client";
-import React from 'react';
+import React,{useState}from 'react';
 import { motion } from 'framer-motion';
 import { FaRegUser, FaUsersCog, FaClipboardCheck, FaMoneyBillAlt, FaCheckCircle, FaArrowRight } from 'react-icons/fa';
+import StudentRegistrationModal from './StudentRegistrationModal';
+
 
 const EnrollmentSteps = () => {
+     const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+    
+      // Open the modal
+      const openModal = () => setIsModalOpen(true);
+    
+      // Close the modal
+      const closeModal = () => setIsModalOpen(false);
   const steps = [
     {
       title: 'Register For Admission',
@@ -107,18 +116,23 @@ const EnrollmentSteps = () => {
 
         <div className="text-center mt-8">
           <motion.button
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded animate-bounce  transition duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.6, ease: "easeInOut" }}
+            onClick={openModal}
+            
           >
             Click To Enroll Your's!
           </motion.button>
         </div>
+
       </div>
+      <StudentRegistrationModal open={isModalOpen} onClose={closeModal} />
     </motion.section>
+    
   );
 };
 

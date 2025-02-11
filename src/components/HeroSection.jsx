@@ -27,9 +27,9 @@ const HeroSection = () => {
           <p className="text-gray-600 mt-4 text-lg">
             Globally bloomed and locally at hand, exclusively for the children of expatriates in the GCC and around the world.
           </p>
-          <Link href="/enroll">
+          <Link href="/programs">
             <button className="mt-6 bg-green-500 a text-white px-6 py-3 rounded-lg font-medium hover:bg-green-600 transition duration-300">
-              Enroll a Course
+              Explore Programs
             </button>
           </Link>
         </motion.div>

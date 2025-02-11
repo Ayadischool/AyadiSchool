@@ -4,9 +4,17 @@ import { FiMenu, FiX } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import StudentRegistrationModal from "./StudentRegistrationModal"; // Import the modal
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+
+  // Open the modal
+  const openModal = () => setIsModalOpen(true);
+
+  // Close the modal
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <nav className="bg-white px-6 md:px-12 py-4 ">
@@ -26,8 +34,11 @@ const Navbar = () => {
 
         {/* Call Button */}
         <div className="hidden md:block">
-          <button className="bg-green-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-600 transition duration-300">
-            Get a Call Back
+          <button
+            className="bg-red-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-red-700 transition duration-300 animate-bounce"
+            onClick={openModal} // Open the modal on click
+          >
+            Get Admission
           </button>
         </div>
 
@@ -62,13 +73,17 @@ const Navbar = () => {
               Contact Us
             </Link>
             <button
-              className="bg-green-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-600 transition duration-300"
-            >
-              Get a Call Back
-            </button>
+            className="bg-red-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-red-700 transition duration-300"
+            onClick={openModal} // Open the modal on click
+          >
+            Get a Admission
+          </button>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Student Registration Modal */}
+      <StudentRegistrationModal open={isModalOpen} onClose={closeModal} />
     </nav>
   );
 };

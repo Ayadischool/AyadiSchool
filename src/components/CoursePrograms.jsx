@@ -2,8 +2,23 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaBook, FaGraduationCap, FaChevronDown } from "react-icons/fa";
+import StudentRegistrationModal from "./StudentRegistrationModal";
+
 
 const GradeModal = ({ grade, isOpen, toggleModal }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+    const [selectedGrade, setSelectedGrade] = useState(null);
+    const openModal = () => {
+        setSelectedGrade(grade); // Store the selected grade
+       
+        setIsModalOpen(true); // Open the modal
+      };
+    
+      // Close the modal
+      const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedGrade(null); // Reset selected grade when modal is closed
+      };
   const subjectsData = {
     1: ["Math", "English", "Social Studies", "Science"],
     2: ["Math", "English", "Social Studies", "Science", "Computer Science"],
@@ -51,12 +66,13 @@ const GradeModal = ({ grade, isOpen, toggleModal }) => {
             ))}
           </ul>
           <div className="mt-4">
-            <button className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105">
+            <button className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105" onClick={openModal}>
               <FaGraduationCap /> Enroll Now!
             </button>
           </div>
         </motion.div>
       )}
+       <StudentRegistrationModal open={isModalOpen} onClose={closeModal} grade={grade}/>
     </motion.div>
   );
 };
@@ -117,6 +133,7 @@ const CoursePrograms = () => {
           </button>
         </div>
       </div>
+     
     </section>
   );
 };
